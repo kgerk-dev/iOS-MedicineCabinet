@@ -2,39 +2,11 @@
 //  ContentView.swift
 //  iOS-MedicineCabinet
 //
-//  Created by Kyle Gerken on 5/11/22.
+//  Created by Kyle Gerken on 4/11/22.
 //
 
 import SwiftUI
 import CoreData
-
-//Example how to use an enum within a picker.
-/*
-enum Priority: String, Identifiable, CaseIterable {
-	var id: UUID {
-		return UUID()
-	}
-	
-	case low = "Low"
-	case medium = "Medium"
-	case high = "High"
-	
-}
-
-extension Priority {
-	
-	var title: String {
-		switch self {
-			case .low:
-				return "Low"
-			case .medium:
-				return "Medium"
-			case .high:
-				return "High"
-		}
-	}
-}
- */
 
 
 struct MainView: View {
@@ -43,15 +15,6 @@ struct MainView: View {
 		// When Nav Bar Title is in display mode this allows the user to modify the text color.
 		UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
 	}
-	
-	//BoilerPlate for CoreData
-	
-   // @Environment(\.managedObjectContext) private var viewContext
-
-   // @FetchRequest(
-    //    sortDescriptors: [NSSortDescriptor(keyPath: \Medicine.timestamp, ascending: true)],
-   //     animation: .default)
-   // private var medicine: FetchedResults<Medicine>
 	
 	@Environment(\.managedObjectContext) var managedObjectContext
 	@Environment(\.dismiss) var dismiss
@@ -87,11 +50,9 @@ struct MainView: View {
 							height:geometry.size.height
 						)
 						//While NavMenu is open, we want to disable MainMenu until Nav is closed
-					
 						//Standard If Statements structure differently when called in a parameter. Use tertiary conditional statements for a cleaner in-line approach, when simple.
 						.offset(x: self.displayMenu ? geometry.size.width/2 : 0)
 						.disabled(self.displayMenu ? true : false)
-					
 					
 					//Declare the showMenu boolean
 					if self.displayMenu {
@@ -126,94 +87,61 @@ struct MainView: View {
 					EditButton()
 				}
 				ToolbarItem(placement: .navigationBarTrailing) {
-					//NavigationLink("Add", destination: AddMedView(meds: [Products]))
+					NavigationLink("Add", destination: AddMedView(viewModel: MedicineListViewModel()))
 				}
 			}
-			
 		}
-		
     }
 }
-
 
 /*
  Displays the content in the Main Page List of Medicine
  */
 struct ListView: View {
 	
+	@Environment(\.managedObjectContext) var managedObjectContext
+	
+	@FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Medicine.name, ascending: true)],
+	animation: .default)
+	private var medicine: FetchedResults<Medicine>
+	
 	@Binding var displayMenu: Bool
-	@State var medicines: [String] = [
-		"This is the first Title",
-		"Second",
-		"Third"
-	]
 	
 	var body: some View {
 		List {
-			ForEach(medicines, id: \.self) {
-				medicine in ListRowView(title: medicine)
+			ForEach(medicine) { medicine in
+				NavigationLink(destination: EditMedicineDetailView(medicine: medicine)) {
+					HStack {
+						VStack(alignment: .leading, spacing: 6) {
+							Text(medicine.name!)
+								.bold()
+							
+							Text("Remaining in Refill \(medicine.pillsRemaining)")
+								.foregroundColor(.blue)
+								.italic()
+						}
+					}
+				}
 			}
+			.onDelete(perform: deleteMedicine)
 		}
 		.listStyle(PlainListStyle())
 	
 	}
-}
-
-
 	
+	private func deleteMedicine(offsets: IndexSet) {
+		withAnimation {
+			offsets.map { medicine[$0] }.forEach(managedObjectContext.delete)
+			
+			ModelController().saveData(context: managedObjectContext)
+		}
+	}
+}
 
 //Main Page Preview for all contents in specified Order
 struct MainView_Previews: PreviewProvider {
 		static var previews: some View {
-			
 			MainView()
 	}
 }
-
-
-
-
-	
-/*
-    private func addItem() {
-        withAnimation {
-            let newItem = Medicine(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-}
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-
-*/
 

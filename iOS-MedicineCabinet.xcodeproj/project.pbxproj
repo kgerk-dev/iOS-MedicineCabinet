@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE7CDE6E283DB7D500E35C50 /* openFDAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7CDE6D283DB7D500E35C50 /* openFDAModel.swift */; };
+		FE7CDE70283DB85B00E35C50 /* MedicineSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7CDE6F283DB85B00E35C50 /* MedicineSearchViewModel.swift */; };
+		FE7CDE72283E302B00E35C50 /* AddMedManualDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7CDE71283E302B00E35C50 /* AddMedManualDetailsView.swift */; };
+		FE7CDE78283E750400E35C50 /* EditMedicineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7CDE77283E750400E35C50 /* EditMedicineDetailView.swift */; };
 		FEE65131282B9C71001880EE /* iOS_MedicineCabinetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65130282B9C71001880EE /* iOS_MedicineCabinetApp.swift */; };
 		FEE65133282B9C71001880EE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65132282B9C71001880EE /* MainView.swift */; };
 		FEE65135282B9C72001880EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE65134282B9C72001880EE /* Assets.xcassets */; };
@@ -16,16 +20,11 @@
 		FEE65151282B9C72001880EE /* iOS_MedicineCabinetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65150282B9C72001880EE /* iOS_MedicineCabinetUITests.swift */; };
 		FEE65153282B9C72001880EE /* iOS_MedicineCabinetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65152282B9C72001880EE /* iOS_MedicineCabinetUITestsLaunchTests.swift */; };
 		FEE65160282B9D45001880EE /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6515F282B9D45001880EE /* NavMenu.swift */; };
-		FEE65168282BCF71001880EE /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65167282BCF71001880EE /* ListRowView.swift */; };
 		FEE6516A282BD50D001880EE /* AddMedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65169282BD50D001880EE /* AddMedView.swift */; };
 		FEE6516E282D4C73001880EE /* AddMedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6516D282D4C73001880EE /* AddMedDetailsView.swift */; };
 		FEE65170282D503E001880EE /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6516F282D503E001880EE /* ModelController.swift */; };
 		FEE65172282D62E1001880EE /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65171282D62E1001880EE /* CalendarView.swift */; };
 		FEE65174282D6479001880EE /* MyDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65173282D6479001880EE /* MyDatePicker.swift */; };
-		FEE65179282DCC1B001880EE /* MedicineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE65178282DCC1B001880EE /* MedicineData.swift */; };
-		FEE6517B282DD201001880EE /* MedicineFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6517A282DD201001880EE /* MedicineFetcher.swift */; };
-		FEE6517D282DD4BD001880EE /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6517C282DD4BD001880EE /* ErrorView.swift */; };
-		FEE6517F282DD4D3001880EE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6517E282DD4D3001880EE /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE7CDE6D283DB7D500E35C50 /* openFDAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openFDAModel.swift; sourceTree = "<group>"; };
+		FE7CDE6F283DB85B00E35C50 /* MedicineSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSearchViewModel.swift; sourceTree = "<group>"; };
+		FE7CDE71283E302B00E35C50 /* AddMedManualDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedManualDetailsView.swift; sourceTree = "<group>"; };
+		FE7CDE77283E750400E35C50 /* EditMedicineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicineDetailView.swift; sourceTree = "<group>"; };
 		FEE6512D282B9C71001880EE /* iOS-MedicineCabinet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-MedicineCabinet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE65130282B9C71001880EE /* iOS_MedicineCabinetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_MedicineCabinetApp.swift; sourceTree = "<group>"; };
 		FEE65132282B9C71001880EE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -58,16 +61,11 @@
 		FEE65150282B9C72001880EE /* iOS_MedicineCabinetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_MedicineCabinetUITests.swift; sourceTree = "<group>"; };
 		FEE65152282B9C72001880EE /* iOS_MedicineCabinetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_MedicineCabinetUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FEE6515F282B9D45001880EE /* NavMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
-		FEE65167282BCF71001880EE /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		FEE65169282BD50D001880EE /* AddMedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedView.swift; sourceTree = "<group>"; };
 		FEE6516D282D4C73001880EE /* AddMedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedDetailsView.swift; sourceTree = "<group>"; };
 		FEE6516F282D503E001880EE /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		FEE65171282D62E1001880EE /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		FEE65173282D6479001880EE /* MyDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatePicker.swift; sourceTree = "<group>"; };
-		FEE65178282DCC1B001880EE /* MedicineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineData.swift; sourceTree = "<group>"; };
-		FEE6517A282DD201001880EE /* MedicineFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineFetcher.swift; sourceTree = "<group>"; };
-		FEE6517C282DD4BD001880EE /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		FEE6517E282DD4D3001880EE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +96,6 @@
 		FEE65124282B9C71001880EE = {
 			isa = PBXGroup;
 			children = (
-				FEE65177282DCBE6001880EE /* Networking */,
 				FEE6512F282B9C71001880EE /* iOS-MedicineCabinet */,
 				FEE65145282B9C72001880EE /* iOS-MedicineCabinetTests */,
 				FEE6514F282B9C72001880EE /* iOS-MedicineCabinetUITests */,
@@ -158,13 +155,12 @@
 			children = (
 				FEE65132282B9C71001880EE /* MainView.swift */,
 				FEE6515F282B9D45001880EE /* NavMenu.swift */,
-				FEE65167282BCF71001880EE /* ListRowView.swift */,
 				FEE65169282BD50D001880EE /* AddMedView.swift */,
 				FEE6516D282D4C73001880EE /* AddMedDetailsView.swift */,
 				FEE65171282D62E1001880EE /* CalendarView.swift */,
 				FEE65173282D6479001880EE /* MyDatePicker.swift */,
-				FEE6517C282DD4BD001880EE /* ErrorView.swift */,
-				FEE6517E282DD4D3001880EE /* LoadingView.swift */,
+				FE7CDE71283E302B00E35C50 /* AddMedManualDetailsView.swift */,
+				FE7CDE77283E750400E35C50 /* EditMedicineDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,17 +170,10 @@
 			children = (
 				FEE6513B282B9C72001880EE /* iOS_MedicineCabinet.xcdatamodeld */,
 				FEE6516F282D503E001880EE /* ModelController.swift */,
+				FE7CDE6D283DB7D500E35C50 /* openFDAModel.swift */,
+				FE7CDE6F283DB85B00E35C50 /* MedicineSearchViewModel.swift */,
 			);
 			path = "Data Models";
-			sourceTree = "<group>";
-		};
-		FEE65177282DCBE6001880EE /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				FEE65178282DCC1B001880EE /* MedicineData.swift */,
-				FEE6517A282DD201001880EE /* MedicineFetcher.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,19 +307,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEE65172282D62E1001880EE /* CalendarView.swift in Sources */,
-				FEE6517B282DD201001880EE /* MedicineFetcher.swift in Sources */,
+				FE7CDE78283E750400E35C50 /* EditMedicineDetailView.swift in Sources */,
 				FEE6516A282BD50D001880EE /* AddMedView.swift in Sources */,
 				FEE65170282D503E001880EE /* ModelController.swift in Sources */,
 				FEE6513D282B9C72001880EE /* iOS_MedicineCabinet.xcdatamodeld in Sources */,
 				FEE65174282D6479001880EE /* MyDatePicker.swift in Sources */,
 				FEE65133282B9C71001880EE /* MainView.swift in Sources */,
-				FEE65179282DCC1B001880EE /* MedicineData.swift in Sources */,
-				FEE6517F282DD4D3001880EE /* LoadingView.swift in Sources */,
 				FEE65160282B9D45001880EE /* NavMenu.swift in Sources */,
 				FEE65131282B9C71001880EE /* iOS_MedicineCabinetApp.swift in Sources */,
-				FEE6517D282DD4BD001880EE /* ErrorView.swift in Sources */,
-				FEE65168282BCF71001880EE /* ListRowView.swift in Sources */,
+				FE7CDE70283DB85B00E35C50 /* MedicineSearchViewModel.swift in Sources */,
+				FE7CDE6E283DB7D500E35C50 /* openFDAModel.swift in Sources */,
 				FEE6516E282D4C73001880EE /* AddMedDetailsView.swift in Sources */,
+				FE7CDE72283E302B00E35C50 /* AddMedManualDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

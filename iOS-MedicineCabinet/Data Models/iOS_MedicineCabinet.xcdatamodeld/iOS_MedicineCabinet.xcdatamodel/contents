@@ -2,13 +2,15 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Medicine" representedClassName="Medicine" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="form" optional="YES" attributeType="String"/>
         <attribute name="frequency" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString="No Name"/>
+        <attribute name="pillsRemaining" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="strength" optional="YES" attributeType="String"/>
-        <attribute name="units" optional="YES" attributeType="String"/>
+        <attribute name="totalPillsInRefill" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

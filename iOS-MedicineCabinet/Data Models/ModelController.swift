@@ -2,7 +2,6 @@
 //  ModelController.swift
 //  iOS-MedicineCabinet
 //
-//  Created by Kyle Gerken on 5/12/22.
 //
 
 import Foundation
@@ -12,8 +11,7 @@ class ModelController: ObservableObject {
 	let container = NSPersistentContainer(name: "iOS_MedicineCabinet")
 	
 	init () {
-		container.loadPersistentStores {
-			desc, error in
+		container.loadPersistentStores { desc, error in
 			if let error = error {
 				print("Failed to load the data \(error.localizedDescription)")
 			}
@@ -23,9 +21,9 @@ class ModelController: ObservableObject {
 	func saveData(context: NSManagedObjectContext) {
 		do {
 			try context.save()
-			print("Data Saved!!! Woohoo")
+			print("New value stored")
 		} catch {
-			print("We could Not save the dat")
+			print("Error storing data. Data Not Stored")
 		}
 	}
 	
@@ -48,27 +46,44 @@ class ModelController: ObservableObject {
 	
 	func addNewMedicine(name: String,
 						strength: String,
-						unit: String,
+						//units: String,
+						form: String,
+						frequency: String,
+						pillsRemaining: Int16,
+						totalPillsInRefill: Int16,
 						context: NSManagedObjectContext)
 	{
 		let newMedicine = Medicine(context: context)
 		newMedicine.id = UUID()
+		newMedicine.dateCreated = Date()
+		//newMedicine.units = units
 		newMedicine.name = name
 		newMedicine.strength = strength
-		newMedicine.units = unit
-		
+		newMedicine.form = form
+		newMedicine.frequency = frequency
+		newMedicine.pillsRemaining = pillsRemaining
+		newMedicine.totalPillsInRefill = totalPillsInRefill
 		saveData(context: context)
 	}
 	
 	func editMedicine(medicine: Medicine,
 					  name: String,
 					  strength: String,
-					  unit: String,
+					  //units: String,
+					  form: String,
+					  frequency: String,
+					  pillsRemaining: Int16,
+					  totalPillsInRefill: Int16,
 					  context: NSManagedObjectContext)
 	{
 		medicine.name = name
 		medicine.strength = strength
-		medicine.units = unit
+		medicine.dateCreated = Date()
+		medicine.form = form
+		medicine.frequency = frequency
+		medicine.pillsRemaining = pillsRemaining
+		medicine.totalPillsInRefill = totalPillsInRefill
+		//medicine.units = units
 		saveData(context: context)
 		
 	}

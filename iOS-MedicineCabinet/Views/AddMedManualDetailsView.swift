@@ -1,31 +1,25 @@
 //
-//  AddMedDetailsView.swift
+//  AddMedManualDetailsView.swift
 //  iOS-MedicineCabinet
 //
-//  Created by Kyle Gerken on 4/12/22.
 //
 
 import SwiftUI
 
-struct AddMedDetailsView: View {
+struct AddMedManualDetailsView: View {
+	
 	//Inject Database w/ Enivronment Object
 	@Environment(\.managedObjectContext) var managedObjectContext
 	@Environment(\.dismiss) var dismiss
 	
-	//Local variables that will be modified and added to the DB
-	@ObservedObject var meds: MedicineResultViewModel
-	
 	@State var brandName = ""
-	@State var dosageForm = ""
-	@State var strength = ""
+	@State var dosageForm = "mg"// mg, g, unit(s), piece(s), capsule(s), pill(s), drop(s)
+	@State var totalPillsInRefill = 0
+	@State var pillsRemaining = 0
+	@State var strength = 0 // number formatter TextField
+	@State var frequency = "" // As Needed, EveryDay, Other
+	@State var otherFrequency = ""
 	
-	
-	@State private var frequency = ""
-	@State private var totalPillsInRefill = 0
-	@State private var pillsRemaining = 0
-	
-	var dosageFormList = ["mg", "g", "unit(s)", "piece(s)", "capsule(s)", "pill(s)", "drop(s)"]
-	var frequencyList = ["As Needed", "EveryDay", "Other"]
 	
 	let formatter: NumberFormatter = {
 		let formatter = NumberFormatter()
@@ -33,34 +27,36 @@ struct AddMedDetailsView: View {
 		return formatter
 	}()
 	
+	var dosageFormList = ["mg", "g", "unit(s)", "piece(s)", "capsule(s)", "pill(s)", "drop(s)"]
+	var frequencyList = ["As Needed", "EveryDay", "Other"]
+	
 	@State var returnHomeActive = false
 	
-	///Main View of page stored here
+	
     var body: some View {
 		Form {
 			Section {
 				HStack {
-					Text("Name: ")
-					if meds.brandName == "" {
-						TextField("Enter Medicine Name: ", text: $brandName)
-					}
-					Text(meds.brandName ?? "")
+					Text("Name  ")
+					TextField("Enter Medicine Name", text: $brandName)
 				}
 				HStack {
-					Text("Dosage Form: ")
-					if meds.dosageForm == "" {
-						TextField("Enter Dosage Form: ", text: $dosageForm)
+					//Text("Dosage: ")
+					Picker("Dosage Form ", selection: $dosageForm){
+						ForEach(dosageFormList, id: \.self) {
+							Text($0)
+						}
 					}
-					Text(meds.dosageForm ?? "")
+					Text("Dosage \(dosageForm)")
 				}
 				HStack {
-					Text("Strength: ")
-					if meds.strength == "" {
-						TextField("Enter Strength: ", text: $strength)
-					}
-					Text(meds.strength ?? "")
+					Text("Strength ")
+					TextField("Enter strength in \(dosageForm)", value: $strength, formatter: formatter)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+						.keyboardType(.numberPad)
+						.padding()
+					Text("\(dosageForm)")
 				}
-				
 				HStack {
 					Picker("Frequency", selection: $frequency){
 						ForEach(frequencyList, id: \.self) {
@@ -72,7 +68,7 @@ struct AddMedDetailsView: View {
 					VStack {
 						if frequency == "Other" {
 							Text("Enter Frequency Amount")
-							TextField("New Amount ",text: $frequency)
+							TextField("New Amount ",text: $otherFrequency)
 						}
 					}
 				}
@@ -100,9 +96,9 @@ struct AddMedDetailsView: View {
 						Button("Submit") {
 							self.returnHomeActive = true
 							
-							ModelController().addNewMedicine(name: meds.brandName!,
-															 strength: String(meds.strength!),
-															 form: meds.dosageForm!,
+							ModelController().addNewMedicine(name: brandName,
+															 strength: String(strength),
+															 form: dosageForm,
 															 frequency: frequency,
 															 pillsRemaining: Int16(pillsRemaining),
 															 totalPillsInRefill: Int16(totalPillsInRefill),
@@ -118,5 +114,11 @@ struct AddMedDetailsView: View {
 				}
 			}
 		}
+    }
+}
+
+struct AddMedManualDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddMedManualDetailsView()
     }
 }
